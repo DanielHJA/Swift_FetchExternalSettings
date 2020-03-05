@@ -79,6 +79,21 @@ class MapService: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
         }
     }
     
+    private func addRegion(_ placemark: CLPlacemark) {
+        if CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
+            guard let coordinates = placemark.location?.coordinate else { return }
+            let distance = CLLocationDistance(5000)
+            
+            let region = CLCircularRegion(center: coordinates, radius: distance, identifier: "region")
+            region.notifyOnEntry = true
+            region.notifyOnExit = true
+            locationManager.startMonitoring(for: region)
+            
+            let circle = MKCircle(center: coordinates, radius: distance)
+            mapView.addOverlay(circle)
+        }
+    }
+    
     func AddPinAtPlacemark(_ placemark: CLPlacemark) {
         guard let coordinates = placemark.location?.coordinate else { return }
         let annotation = MKPointAnnotation()
@@ -97,11 +112,13 @@ class MapService: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
         guard let annotation = currentAnnotation, let location = locationManager.location?.coordinate else { return }
         let request = MKDirections.Request()
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: location))
-        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: annotation.coordinate))
+        let destinationPlacemark = MKPlacemark(coordinate: annotation.coordinate)
+        request.destination = MKMapItem(placemark: destinationPlacemark)
         request.requestsAlternateRoutes = false
         request.transportType = .automobile
         let directions = MKDirections(request: request)
         mapView.addRouteOverLaysFromDirections(directions)
+        addRegion(destinationPlacemark)
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -117,6 +134,7 @@ class MapService: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKPolyline { return DirectionsPolylineRenderer(overlay: overlay) }
+        if overlay is MKCircle { return RegionCircleRenderer(overlay: overlay) }
         return MKOverlayRenderer()
     }
     
@@ -155,6 +173,17 @@ class MapService: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
+    }
+    
+    let audioService = AudioService()
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        print("Entered region")
+        audioService.playSound()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        print("Exited region")
+        audioService.stopSound()
     }
     
 }

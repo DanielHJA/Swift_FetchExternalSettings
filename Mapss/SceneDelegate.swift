@@ -16,13 +16,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             window = UIWindow(windowScene: windowScene)
             
-            FileService.fileExist(fileName: "LayoutSettings", fileType: .json, completion: { (exist) in
-                if exist {
-                    self.configureUsingLocalLayoutSettings()
-                } else {
-                    self.configureFetchingExternalLayoutSettings()
-                }
-            })
+            if FileService.fileExist(fileName: "LayoutSettings", fileType: .json) {
+                self.configureUsingLocalLayoutSettings()
+            } else {
+                self.configureFetchingExternalLayoutSettings()
+            }
+             
             window?.makeKeyAndVisible()
         }
     }
@@ -32,8 +31,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func configureUsingLocalLayoutSettings() {
-        self.window?.rootViewController = ViewController()
-        FileService.fetch(type: LayoutSettingsObject.self, fileName: "LayoutSettings", fileType: .json) { (layoutSettingsObject) in
+        self.window?.rootViewController = UINavigationController(rootViewController: ViewController())
+        if let layoutSettingsObject = FileService.fetch(type: LayoutSettingsObject.self, fileName: "LayoutSettings", fileType: .json) {
             LayoutSettings.shared.layoutSettingsObject = layoutSettingsObject
         }
     }

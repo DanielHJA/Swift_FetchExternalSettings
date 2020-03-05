@@ -87,22 +87,23 @@ class FileService {
         }
     }
     
-    class func fetch<T: Decodable>(type: T.Type, fileName: String, fileType: FileType, completion: @escaping (T?) -> Void) {
-        guard let documentsDirectory = documentsDirectory else { return }
+    class func fetch<T: Decodable>(type: T.Type, fileName: String, fileType: FileType) -> T? {
+        guard let documentsDirectory = documentsDirectory else { return nil }
         let fileLocation = documentsDirectory.appendingPathComponent("\(fileName).\(fileType)")
         
         do {
             let data = try Data(contentsOf: fileLocation)
-            completion(data.decoded())
+            return data.decoded()
         } catch {
             print(error)
+            return nil
         }
     }
     
-    class func fileExist(fileName: String, fileType: FileType, completion: @escaping (Bool) -> Void) {
-        guard let documentsDirectory = documentsDirectory else { return }
+    class func fileExist(fileName: String, fileType: FileType) -> Bool {
+        guard let documentsDirectory = documentsDirectory else { return false }
         let fileLocation = documentsDirectory.appendingPathComponent("\(fileName).\(fileType)")
-        completion(manager.fileExists(atPath: fileLocation.path))
+        return manager.fileExists(atPath: fileLocation.path)
     }
     
 }
