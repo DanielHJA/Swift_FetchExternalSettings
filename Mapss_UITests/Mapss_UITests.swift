@@ -1,14 +1,14 @@
 //
-//  MapssUITests.swift
-//  MapssUITests
+//  Mapss_UITests.swift
+//  Mapss_UITests
 //
-//  Created by Daniel Hjärtström on 2020-03-03.
+//  Created by Daniel Hjärtström on 2020-03-04.
 //  Copyright © 2020 Daniel Hjärtström. All rights reserved.
 //
 
 import XCTest
 
-class MapssUITests: XCTestCase {
+class Mapss_UITests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
