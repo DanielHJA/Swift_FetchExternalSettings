@@ -12,7 +12,8 @@ class WebService<T: Decodable> {
 
     class func fetch(urlString: String, completion: @escaping (Result<T, Error>) -> Void) {
         guard let url = URL(string: urlString) else { return }
-        let request = URLRequest(url: url)
+        var request = URLRequest(url: url)
+        request.cachePolicy = URLRequest.CachePolicy.returnCacheDataElseLoad
         let configuration = URLSessionConfiguration.default
         let session = URLSession(configuration: configuration)
         
@@ -23,23 +24,11 @@ class WebService<T: Decodable> {
                 return
             }
             
-            if let data: T = data?.decoded() {
+            if let data: T = data?.decoded() { 
                 completion(.success(data))
             }
             
         }.resume()
     }
     
-}
-
-extension Data {
-    func decoded<T: Decodable>() -> T? {
-        let decoder = JSONDecoder()
-        do {
-            return try decoder.decode(T.self, from: self)
-        } catch {
-            print(error)
-            return nil
-        }
-    }
 }

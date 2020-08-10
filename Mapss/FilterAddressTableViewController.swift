@@ -16,7 +16,16 @@ class FilterResultsTableViewController: UITableViewController, UISearchResultsUp
 
     weak var delegate: FilterResultsTableViewControllerDelegate?
     
-    private var adresses: [String] = ["Oppeby gård 3, Nyköping", "Axgränd 3, Linköping", "Storgatan 5, Stockholm", "Tornby Park 5, Linköping", "Någonstansgatan 4, Solna", "Stallvägen 15, Växjö"]
+    private var adresses: [String] = {
+        return [
+            "Oppeby gård 3, Nyköping",
+            "Axgränd 3, Linköping",
+            "Storgatan 5, Stockholm",
+            "Tornby Park 5, Linköping",
+            "Någonstansgatan 4, Solna",
+            "Stallvägen 15, Växjö"
+        ]
+    }()
     
     private var filteredAdresses: [String] = []
     

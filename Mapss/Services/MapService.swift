@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import UserNotifications
 
 class MapService: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
     
@@ -79,21 +80,6 @@ class MapService: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
         }
     }
     
-    private func addRegion(_ placemark: CLPlacemark) {
-        if CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
-            guard let coordinates = placemark.location?.coordinate else { return }
-            let distance = CLLocationDistance(5000)
-            
-            let region = CLCircularRegion(center: coordinates, radius: distance, identifier: "region")
-            region.notifyOnEntry = true
-            region.notifyOnExit = true
-            locationManager.startMonitoring(for: region)
-            
-            let circle = MKCircle(center: coordinates, radius: distance)
-            mapView.addOverlay(circle)
-        }
-    }
-    
     func AddPinAtPlacemark(_ placemark: CLPlacemark) {
         guard let coordinates = placemark.location?.coordinate else { return }
         let annotation = MKPointAnnotation()
@@ -119,6 +105,20 @@ class MapService: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
         let directions = MKDirections(request: request)
         mapView.addRouteOverLaysFromDirections(directions)
         addRegion(destinationPlacemark)
+    }
+    
+    private func addRegion(_ placemark: CLPlacemark) {
+        if CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
+            guard let coordinates = placemark.location?.coordinate else { return }
+            let distance = CLLocationDistance(5000)
+            
+            let region = CLCircularRegion(center: coordinates, radius: distance, identifier: placemark.locality ?? "your destination.")
+            locationManager.startMonitoring(for: region)
+            AppDelegate.configureNotificationForRegion(region)
+
+            let circle = MKCircle(center: coordinates, radius: distance)
+            mapView.addOverlay(circle)
+        }
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -168,22 +168,21 @@ class MapService: NSObject, MKMapViewDelegate, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.first else { return }
-        print(location.coordinate)
+       // print(location.coordinate)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
     
-    let audioService = AudioService()
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         print("Entered region")
-        audioService.playSound()
+        AudioService.shared.playSound(.alarm)
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         print("Exited region")
-        audioService.stopSound()
+        AudioService.shared.stopSound()
     }
     
 }

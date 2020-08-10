@@ -7,17 +7,11 @@
 //
 
 import UIKit
-import MapKit
-import CoreLocation
 
-class ViewController: UIViewController, /*UISearchBarDelegate*/ UISearchControllerDelegate, UISearchBarDelegate {
-    
-    private var mapService: MapService!
-    
-    private lazy var mapView: MKMapView = {
-        let temp = MKMapView()
-        temp.showsUserLocation = true
-        temp.userTrackingMode = .follow
+class ViewController: UIViewController, UISearchControllerDelegate, UISearchBarDelegate {
+        
+    private lazy var mapView: MapView = {
+        let temp = MapView(self) 
         view.addSubview(temp)
         temp.translatesAutoresizingMaskIntoConstraints = false
         temp.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
@@ -74,23 +68,13 @@ class ViewController: UIViewController, /*UISearchBarDelegate*/ UISearchControll
         super.viewDidLoad()
         title = "Alertify"
         view.backgroundColor = .white
-        mapService = MapService(self, mapView: mapView)
         searchView.addSubview(searchController.searchBar)
         navigationItem.rightBarButtonItem = barButtonItem
+        mapView.isHidden = false
     }
     
     @objc private func getDirections() {
-        mapService.getDirections()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if !LayoutSettings.shared.hasLayoutSettings {
-            let vc = FetchSettingsViewController()
-            vc.modalPresentationStyle = .fullScreen
-            vc.modalTransitionStyle = .crossDissolve
-            present(vc, animated: true, completion: nil)
-        }
+        mapView.getDirections()
     }
     
 }
@@ -98,15 +82,6 @@ class ViewController: UIViewController, /*UISearchBarDelegate*/ UISearchControll
 extension ViewController: FilterResultsTableViewControllerDelegate {
     func didSelectAddress(_ address: String) {
         searchController.isActive = false
-        mapService.getAddress(address)
-    }
-}
-
-extension UIViewController {
-    func setRootViewController(_ controller: UIViewController) {
-        if let scene = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
-            scene.window?.rootViewController = UINavigationController(rootViewController: controller)
-            scene.window?.makeKeyAndVisible()
-        }
+        mapView.getAddress(address)
     }
 }

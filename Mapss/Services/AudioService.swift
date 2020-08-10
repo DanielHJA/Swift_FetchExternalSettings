@@ -9,13 +9,24 @@
 import UIKit
 import AVFoundation
 
+enum Sound: String {
+    case alarm = "alarm.mp3"
+    
+    var url: URL? {
+        guard let path = Bundle.main.path(forResource: self.rawValue, ofType: nil) else { return nil }
+        return URL(fileURLWithPath: path)
+    }
+    
+}
+
 class AudioService: NSObject {
+    static let shared = AudioService()
+    override private init() { } 
     
     var player: AVAudioPlayer?
     
-    func playSound() {
-        let path = Bundle.main.path(forResource: "alarm.mp3", ofType:nil)!
-        let url = URL(fileURLWithPath: path)
+    func playSound(_ sound: Sound) {
+        guard let url = sound.url else { return }
 
         do {
             try AVAudioSession.sharedInstance().setActive(true)
@@ -25,7 +36,6 @@ class AudioService: NSObject {
         } catch {
             print(error)
         }
-        
     }
     
     func stopSound() {
@@ -37,11 +47,4 @@ class AudioService: NSObject {
 //        AudioServicesPlaySystemSound(soundID)
 //    }
     
-}
-
-extension Bundle {
-    static func loadFileFromBundle(_ filename: String) -> URL? {
-        guard let path = Bundle.main.path(forResource: filename, ofType: "mp3") else { return nil }
-        return URL(fileURLWithPath: path)
-    }
 }

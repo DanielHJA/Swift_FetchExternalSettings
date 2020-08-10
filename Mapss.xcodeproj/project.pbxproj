@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B5E089F241299F800F05232 /* LayoutSettingsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B935DD12410F40600CB9529 /* LayoutSettingsObject.swift */; };
 		7B620D75240FBC4D00C3E77B /* DirectionsPolylineRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B620D74240FBC4D00C3E77B /* DirectionsPolylineRenderer.swift */; };
 		7B620D76240FBC5300C3E77B /* DirectionsPolylineRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B620D74240FBC4D00C3E77B /* DirectionsPolylineRenderer.swift */; };
 		7B620D78240FBEC100C3E77B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B620D77240FBEC100C3E77B /* Extensions.swift */; };
@@ -30,8 +31,8 @@
 		7B717D8E240E6561001ADFA2 /* MapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B717D8C240E64EF001ADFA2 /* MapService.swift */; };
 		7B717D90240E671D001ADFA2 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B717D8F240E671D001ADFA2 /* AlertService.swift */; };
 		7B717D91240E6848001ADFA2 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B717D8F240E671D001ADFA2 /* AlertService.swift */; };
-		7B717D93240E8C4E001ADFA2 /* FilterResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B717D92240E8C4E001ADFA2 /* FilterResultsTableViewController.swift */; };
-		7B717D94240E8CFC001ADFA2 /* FilterResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B717D92240E8C4E001ADFA2 /* FilterResultsTableViewController.swift */; };
+		7B717D93240E8C4E001ADFA2 /* FilterAddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B717D92240E8C4E001ADFA2 /* FilterAddressTableViewController.swift */; };
+		7B717D94240E8CFC001ADFA2 /* FilterAddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B717D92240E8C4E001ADFA2 /* FilterAddressTableViewController.swift */; };
 		7B935DCB2410F0AE00CB9529 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B935DCA2410F0AE00CB9529 /* WebService.swift */; };
 		7B935DCD2410F22800CB9529 /* LayoutSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B935DCC2410F22700CB9529 /* LayoutSettings.swift */; };
 		7B935DD02410F3DB00CB9529 /* LayoutSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B935DCC2410F22700CB9529 /* LayoutSettings.swift */; };
@@ -47,6 +48,10 @@
 		7B935DE1241126F800CB9529 /* AudioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B935DDF241126F800CB9529 /* AudioService.swift */; };
 		7B935DE324112BDF00CB9529 /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B935DE224112BDF00CB9529 /* alarm.mp3 */; };
 		7B935DE424112BDF00CB9529 /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7B935DE224112BDF00CB9529 /* alarm.mp3 */; };
+		7B935DE624113FFD00CB9529 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B935DE524113FFD00CB9529 /* FileService.swift */; };
+		7B935DE724113FFD00CB9529 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B935DE524113FFD00CB9529 /* FileService.swift */; };
+		7B935DE92411409C00CB9529 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B935DE82411409C00CB9529 /* MapView.swift */; };
+		7B935DEA2411409C00CB9529 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B935DE82411409C00CB9529 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,15 +93,17 @@
 		7B717D8A240E62E5001ADFA2 /* Info_RELEASE.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info_RELEASE.plist; sourceTree = "<group>"; };
 		7B717D8C240E64EF001ADFA2 /* MapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapService.swift; sourceTree = "<group>"; };
 		7B717D8F240E671D001ADFA2 /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
-		7B717D92240E8C4E001ADFA2 /* FilterResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResultsTableViewController.swift; sourceTree = "<group>"; };
+		7B717D92240E8C4E001ADFA2 /* FilterAddressTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterAddressTableViewController.swift; sourceTree = "<group>"; };
 		7B935DCA2410F0AE00CB9529 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		7B935DCC2410F22700CB9529 /* LayoutSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSettings.swift; sourceTree = "<group>"; };
 		7B935DD12410F40600CB9529 /* LayoutSettingsObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSettingsObject.swift; sourceTree = "<group>"; };
 		7B935DD42411005500CB9529 /* FetchSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSettingsViewController.swift; sourceTree = "<group>"; };
 		7B935DD924111E8400CB9529 /* RegionCircleRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionCircleRenderer.swift; sourceTree = "<group>"; };
-		7B935DDC2411245100CB9529 /* linkoping.gpx */ = {isa = PBXFileReference; lastKnownFileType = text; path = linkoping.gpx; sourceTree = "<group>"; };
+		7B935DDC2411245100CB9529 /* linkoping.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = linkoping.gpx; sourceTree = "<group>"; };
 		7B935DDF241126F800CB9529 /* AudioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioService.swift; sourceTree = "<group>"; };
 		7B935DE224112BDF00CB9529 /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
+		7B935DE524113FFD00CB9529 /* FileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
+		7B935DE82411409C00CB9529 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +138,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B5E089B2412999D00F05232 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7B935DDF241126F800CB9529 /* AudioService.swift */,
+				7B935DE524113FFD00CB9529 /* FileService.swift */,
+				7B935DCA2410F0AE00CB9529 /* WebService.swift */,
+				7B717D8C240E64EF001ADFA2 /* MapService.swift */,
+				7B717D8F240E671D001ADFA2 /* AlertService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		7B5E089C241299B400F05232 /* MapRenderers */ = {
+			isa = PBXGroup;
+			children = (
+				7B620D74240FBC4D00C3E77B /* DirectionsPolylineRenderer.swift */,
+				7B935DD924111E8400CB9529 /* RegionCircleRenderer.swift */,
+			);
+			path = MapRenderers;
+			sourceTree = "<group>";
+		};
+		7B5E089D241299CB00F05232 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		7B5E089E241299EC00F05232 /* Settings+Layout */ = {
+			isa = PBXGroup;
+			children = (
+				7B935DD12410F40600CB9529 /* LayoutSettingsObject.swift */,
+				7B935DCC2410F22700CB9529 /* LayoutSettings.swift */,
+			);
+			path = "Settings+Layout";
+			sourceTree = "<group>";
+		};
 		7B620D87240FD0B700C3E77B /* Mapss_Test */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,26 +219,23 @@
 			isa = PBXGroup;
 			children = (
 				7B717D45240E619F001ADFA2 /* AppDelegate.swift */,
-				7B935DD42411005500CB9529 /* FetchSettingsViewController.swift */,
-				7B935DCA2410F0AE00CB9529 /* WebService.swift */,
-				7B935DD12410F40600CB9529 /* LayoutSettingsObject.swift */,
-				7B935DCC2410F22700CB9529 /* LayoutSettings.swift */,
-				7B620D74240FBC4D00C3E77B /* DirectionsPolylineRenderer.swift */,
 				7B935DE224112BDF00CB9529 /* alarm.mp3 */,
-				7B717D47240E619F001ADFA2 /* SceneDelegate.swift */,
 				7B935DDC2411245100CB9529 /* linkoping.gpx */,
-				7B717D49240E619F001ADFA2 /* ViewController.swift */,
-				7B717D92240E8C4E001ADFA2 /* FilterResultsTableViewController.swift */,
-				7B717D8C240E64EF001ADFA2 /* MapService.swift */,
-				7B935DD924111E8400CB9529 /* RegionCircleRenderer.swift */,
-				7B620D77240FBEC100C3E77B /* Extensions.swift */,
-				7B717D8F240E671D001ADFA2 /* AlertService.swift */,
 				7B717D51240E61A1001ADFA2 /* Assets.xcassets */,
 				7B717D53240E61A1001ADFA2 /* LaunchScreen.storyboard */,
-				7B717D8A240E62E5001ADFA2 /* Info_RELEASE.plist */,
-				7B935DDF241126F800CB9529 /* AudioService.swift */,
-				7B717D56240E61A1001ADFA2 /* Info_DEBUG.plist */,
 				7B717D4E240E619F001ADFA2 /* Mapss.xcdatamodeld */,
+				7B717D47240E619F001ADFA2 /* SceneDelegate.swift */,
+				7B5E089D241299CB00F05232 /* Other */,
+				7B5E089C241299B400F05232 /* MapRenderers */,
+				7B5E089B2412999D00F05232 /* Services */,
+				7B5E089E241299EC00F05232 /* Settings+Layout */,
+				7B717D49240E619F001ADFA2 /* ViewController.swift */,
+				7B935DD42411005500CB9529 /* FetchSettingsViewController.swift */,
+				7B717D92240E8C4E001ADFA2 /* FilterAddressTableViewController.swift */,
+				7B620D77240FBEC100C3E77B /* Extensions.swift */,
+				7B935DE82411409C00CB9529 /* MapView.swift */,
+				7B717D8A240E62E5001ADFA2 /* Info_RELEASE.plist */,
+				7B717D56240E61A1001ADFA2 /* Info_DEBUG.plist */,
 			);
 			path = Mapss;
 			sourceTree = "<group>";
@@ -378,18 +419,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B717D8D240E64EF001ADFA2 /* MapService.swift in Sources */,
+				7B935DE92411409C00CB9529 /* MapView.swift in Sources */,
 				7B935DCD2410F22800CB9529 /* LayoutSettings.swift in Sources */,
 				7B620D78240FBEC100C3E77B /* Extensions.swift in Sources */,
 				7B717D4A240E619F001ADFA2 /* ViewController.swift in Sources */,
 				7B935DD52411005500CB9529 /* FetchSettingsViewController.swift in Sources */,
 				7B935DE0241126F800CB9529 /* AudioService.swift in Sources */,
 				7B717D46240E619F001ADFA2 /* AppDelegate.swift in Sources */,
-				7B717D93240E8C4E001ADFA2 /* FilterResultsTableViewController.swift in Sources */,
+				7B717D93240E8C4E001ADFA2 /* FilterAddressTableViewController.swift in Sources */,
 				7B620D75240FBC4D00C3E77B /* DirectionsPolylineRenderer.swift in Sources */,
 				7B717D50240E619F001ADFA2 /* Mapss.xcdatamodeld in Sources */,
 				7B717D90240E671D001ADFA2 /* AlertService.swift in Sources */,
 				7B935DCB2410F0AE00CB9529 /* WebService.swift in Sources */,
 				7B717D48240E619F001ADFA2 /* SceneDelegate.swift in Sources */,
+				7B935DE624113FFD00CB9529 /* FileService.swift in Sources */,
 				7B935DDA24111E8400CB9529 /* RegionCircleRenderer.swift in Sources */,
 				7B935DD22410F40600CB9529 /* LayoutSettingsObject.swift in Sources */,
 			);
@@ -403,16 +446,19 @@
 				7B935DD32410F49400CB9529 /* WebService.swift in Sources */,
 				7B935DD02410F3DB00CB9529 /* LayoutSettings.swift in Sources */,
 				7B935DD824110E2A00CB9529 /* FetchSettingsViewController.swift in Sources */,
+				7B935DEA2411409C00CB9529 /* MapView.swift in Sources */,
 				7B717D8E240E6561001ADFA2 /* MapService.swift in Sources */,
 				7B620D79240FBF5C00C3E77B /* Extensions.swift in Sources */,
 				7B717D7A240E6209001ADFA2 /* ViewController.swift in Sources */,
 				7B717D7B240E6209001ADFA2 /* AppDelegate.swift in Sources */,
+				7B935DE724113FFD00CB9529 /* FileService.swift in Sources */,
 				7B717D7C240E6209001ADFA2 /* Mapss.xcdatamodeld in Sources */,
 				7B620D76240FBC5300C3E77B /* DirectionsPolylineRenderer.swift in Sources */,
-				7B717D94240E8CFC001ADFA2 /* FilterResultsTableViewController.swift in Sources */,
+				7B717D94240E8CFC001ADFA2 /* FilterAddressTableViewController.swift in Sources */,
 				7B717D91240E6848001ADFA2 /* AlertService.swift in Sources */,
 				7B935DE1241126F800CB9529 /* AudioService.swift in Sources */,
 				7B717D7D240E6209001ADFA2 /* SceneDelegate.swift in Sources */,
+				7B5E089F241299F800F05232 /* LayoutSettingsObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

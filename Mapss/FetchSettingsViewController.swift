@@ -51,9 +51,10 @@ class FetchSettingsViewController: UIViewController {
             switch result {
             case .success(let layoutSettingsObject):
                 LayoutSettings.shared.layoutSettingsObject = layoutSettingsObject
+                FileService.save(fileName: "LayoutSettings", fileType: .json, data: layoutSettingsObject.encoded())
+
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     let controller = ViewController()
-                    FileService.save(fileName: "LayoutSettings", fileType: .json, data: layoutSettingsObject.encoded())
                     self?.setRootViewController(controller)
                 }
             case .failure(let error):
@@ -63,49 +64,3 @@ class FetchSettingsViewController: UIViewController {
     }
 
 }
-
-enum FileType: String {
-    case json = "json"
-}
-
-class FileService {
-    
-    private static let manager = FileManager.default
-    
-    private static var documentsDirectory: URL? {
-        return manager.urls(for: .documentDirectory, in: .userDomainMask).first
-    }
-
-    class func save(fileName: String, fileType: FileType, data: Data?) {
-        guard let documentsDirectory = documentsDirectory else { return }
-        let fileLocation = documentsDirectory.appendingPathComponent("\(fileName).\(fileType)")
-        
-        do {
-            try data?.write(to: fileLocation, options: [])
-        } catch {
-            print(error)
-        }
-    }
-    
-    class func fetch<T: Decodable>(type: T.Type, fileName: String, fileType: FileType) -> T? {
-        guard let documentsDirectory = documentsDirectory else { return nil }
-        let fileLocation = documentsDirectory.appendingPathComponent("\(fileName).\(fileType)")
-        
-        do {
-            let data = try Data(contentsOf: fileLocation)
-            return data.decoded()
-        } catch {
-            print(error)
-            return nil
-        }
-    }
-    
-    class func fileExist(fileName: String, fileType: FileType) -> Bool {
-        guard let documentsDirectory = documentsDirectory else { return false }
-        let fileLocation = documentsDirectory.appendingPathComponent("\(fileName).\(fileType)")
-        return manager.fileExists(atPath: fileLocation.path)
-    }
-    
-}
-
-
